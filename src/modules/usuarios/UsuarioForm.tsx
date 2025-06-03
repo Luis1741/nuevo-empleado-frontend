@@ -71,7 +71,7 @@ const UsuarioForm = ({
   };
 
   return (
-    <div className="card p-4 mt-4">
+    <div className="card p-4 mt-4 was-validated">
       <h4>Registrar Nuevo Usuario</h4>
       <form onSubmit={usuarioEditar ? handleActualizar : handleSubmit}>
         <div className="mb-2">
@@ -82,7 +82,12 @@ const UsuarioForm = ({
             value={form.nombre}
             onChange={handleChange}
             required
+            minLength={1}
+            maxLength={50}
           />
+          <div className="invalid-feedback">
+            El nombre debe tener entre 3 y 50 caracteres.
+          </div>
         </div>
         <div className="mb-2">
           <label>Correo</label>
@@ -93,7 +98,9 @@ const UsuarioForm = ({
             value={form.correo}
             onChange={handleChange}
             required
+            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
           />
+          <div className="invalid-feedback">Ingresa un correo válido.</div>
         </div>
         <div className="mb-2">
           <label>Área</label>
@@ -103,7 +110,12 @@ const UsuarioForm = ({
             value={form.area}
             onChange={handleChange}
             required
+            minLength={2}
+            maxLength={30}
           />
+          <div className="invalid-feedback">
+            El área debe tener entre 2 y 30 caracteres.
+          </div>
         </div>
         <div className="mb-2">
           <label>Rol</label>
@@ -113,7 +125,12 @@ const UsuarioForm = ({
             value={form.rol}
             onChange={handleChange}
             required
+            minLength={2}
+            maxLength={30}
           />
+          <div className="invalid-feedback">
+            El rol debe tener entre 2 y 30 caracteres.
+          </div>
         </div>
         <button className="btn btn-primary mt-2" type="submit">
           {usuarioEditar ? "Actualizar Usuario" : "Crear Usuario"}
