@@ -4,6 +4,6 @@ export interface Usuario {
   correo: string;
   area: string;
   rol: string;
-  estado?: 'pendiente' | 'aprobado' | 'rechazado';
+  estado?: "pendiente" | "aprobado" | "rechazado";
   activo: boolean;
 }

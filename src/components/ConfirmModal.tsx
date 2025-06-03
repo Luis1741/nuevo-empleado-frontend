@@ -30,26 +30,46 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
   if (!show) return null;
   return (
     <>
-      <div className="modal fade show" style={{ display: "block" }} tabIndex={-1}>
+      <div
+        className="modal fade show"
+        style={{ display: "block" }}
+        tabIndex={-1}
+      >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title">{title}</h5>
-              <button type="button" className="btn-close" onClick={onCancel}></button>
+              <button
+                type="button"
+                className="btn-close"
+                onClick={onCancel}
+              ></button>
             </div>
             <div className="modal-body">
               <p>{message}</p>
             </div>
             <div className="modal-footer">
-              <button className="btn btn-secondary" onClick={onCancel} disabled={loading}>
+              <button
+                className="btn btn-secondary"
+                onClick={onCancel}
+                disabled={loading}
+              >
                 Cancelar
               </button>
               {onSecondary && (
-                <button className={`btn btn-${secondaryColor}`} onClick={onSecondary} disabled={loading}>
+                <button
+                  className={`btn btn-${secondaryColor}`}
+                  onClick={onSecondary}
+                  disabled={loading}
+                >
                   {secondaryText}
                 </button>
               )}
-              <button className={`btn btn-${primaryColor}`} onClick={onPrimary} disabled={loading}>
+              <button
+                className={`btn btn-${primaryColor}`}
+                onClick={onPrimary}
+                disabled={loading}
+              >
                 {primaryText}
               </button>
             </div>

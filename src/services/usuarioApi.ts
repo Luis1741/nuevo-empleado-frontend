@@ -1,13 +1,14 @@
-import axios from 'axios';
-import { Usuario } from '../types/Usuario';
+import axios from "axios";
+import { Usuario } from "../types/Usuario";
 
-const API = 'http://localhost:3001/api/usuarios';
+const API = "http://localhost:3001/api/usuarios";
 
 export const obtenerUsuarios = () => axios.get<Usuario[]>(`${API}/listar`);
 
-export const crearUsuario = (data: Omit<Usuario, 'id'>) => axios.post(`${API}/crear`, data);
+export const crearUsuario = (data: Omit<Usuario, "id">) =>
+  axios.post(`${API}/crear`, data);
 
-export const actualizarUsuario = (id: number, data: Omit<Usuario, 'id'>) =>
+export const actualizarUsuario = (id: number, data: Omit<Usuario, "id">) =>
   axios.put(`${API}/actualizar/${id}`, data);
 
 export function eliminarUsuario(id: number) {

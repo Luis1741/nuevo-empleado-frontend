@@ -8,7 +8,11 @@ interface Props {
   onLimpiarEdicion?: () => void;
 }
 
-const UsuarioForm = ({ onUsuarioCreado, usuarioEditar, onLimpiarEdicion }: Props) => {
+const UsuarioForm = ({
+  onUsuarioCreado,
+  usuarioEditar,
+  onLimpiarEdicion,
+}: Props) => {
   const [form, setForm] = useState<Omit<Usuario, "id" | "estado">>({
     nombre: "",
     correo: "",
@@ -19,7 +23,7 @@ const UsuarioForm = ({ onUsuarioCreado, usuarioEditar, onLimpiarEdicion }: Props
 
   const [mensaje, setMensaje] = useState("");
 
-    useEffect(() => {
+  useEffect(() => {
     if (usuarioEditar) {
       const { id, ...rest } = usuarioEditar;
       setForm(rest);
@@ -34,7 +38,9 @@ const UsuarioForm = ({ onUsuarioCreado, usuarioEditar, onLimpiarEdicion }: Props
     }
   }, [usuarioEditar]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -50,7 +56,7 @@ const UsuarioForm = ({ onUsuarioCreado, usuarioEditar, onLimpiarEdicion }: Props
     }
   };
 
-    const handleActualizar = async (e: React.FormEvent) => {
+  const handleActualizar = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!usuarioEditar) return;
     try {
@@ -64,26 +70,50 @@ const UsuarioForm = ({ onUsuarioCreado, usuarioEditar, onLimpiarEdicion }: Props
     }
   };
 
-
   return (
     <div className="card p-4 mt-4">
       <h4>Registrar Nuevo Usuario</h4>
       <form onSubmit={usuarioEditar ? handleActualizar : handleSubmit}>
         <div className="mb-2">
           <label>Nombre</label>
-          <input className="form-control" name="nombre" value={form.nombre} onChange={handleChange} required />
+          <input
+            className="form-control"
+            name="nombre"
+            value={form.nombre}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="mb-2">
           <label>Correo</label>
-          <input className="form-control" name="correo" type="email" value={form.correo} onChange={handleChange} required />
+          <input
+            className="form-control"
+            name="correo"
+            type="email"
+            value={form.correo}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="mb-2">
           <label>Área</label>
-          <input className="form-control" name="area" value={form.area} onChange={handleChange} required />
+          <input
+            className="form-control"
+            name="area"
+            value={form.area}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="mb-2">
           <label>Rol</label>
-          <input className="form-control" name="rol" value={form.rol} onChange={handleChange} required />
+          <input
+            className="form-control"
+            name="rol"
+            value={form.rol}
+            onChange={handleChange}
+            required
+          />
         </div>
         <button className="btn btn-primary mt-2" type="submit">
           {usuarioEditar ? "Actualizar Usuario" : "Crear Usuario"}

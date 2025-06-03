@@ -3,7 +3,11 @@ import { obtenerHistorialAsignacionesList } from "../../services/computadorApi";
 import { Tabla } from "../../components/Tabla";
 import { Asignacion } from "../../types/Computador"; // <-- importa la interfaz
 
-export default function HistorialAsignacionesList({ recargar }: { recargar: boolean }) {
+export default function HistorialAsignacionesList({
+  recargar,
+}: {
+  recargar: boolean;
+}) {
   const [historial, setHistorial] = useState<Asignacion[]>([]); // <-- tipa el estado
 
   useEffect(() => {
@@ -16,10 +20,16 @@ export default function HistorialAsignacionesList({ recargar }: { recargar: bool
       <Tabla
         data={historial}
         columns={[
-          { header: "Usuario", render: a => a.Usuario?.nombre },
-          { header: "Computador", render: a => a.Computador?.nombre },
-          { header: "Número de Serie", render: a => a.Computador?.numeroSerie },
-          { header: "Fecha de Entrega", render: a => new Date(a.fechaEntrega).toLocaleDateString() },
+          { header: "Usuario", render: (a) => a.Usuario?.nombre },
+          { header: "Computador", render: (a) => a.Computador?.nombre },
+          {
+            header: "Número de Serie",
+            render: (a) => a.Computador?.numeroSerie,
+          },
+          {
+            header: "Fecha de Entrega",
+            render: (a) => new Date(a.fechaEntrega).toLocaleDateString(),
+          },
         ]}
       />
     </div>

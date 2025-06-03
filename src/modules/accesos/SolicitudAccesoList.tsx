@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
-import { obtenerSolicitudesAcceso, cambiarEstadoSolicitud } from "../../services/accesoApi";
+import {
+  obtenerSolicitudesAcceso,
+  cambiarEstadoSolicitud,
+} from "../../services/accesoApi";
 import { Tabla } from "../../components/Tabla";
 import { SolicitudAcceso } from "../../types/Acceso";
 
-export default function SolicitudesAccesoList({ recargar }: { recargar: boolean }) {
+export default function SolicitudesAccesoList({
+  recargar,
+}: {
+  recargar: boolean;
+}) {
   const [solicitudes, setSolicitudes] = useState<SolicitudAcceso[]>([]);
 
   const cargarSolicitudes = async () => {
@@ -26,12 +33,18 @@ export default function SolicitudesAccesoList({ recargar }: { recargar: boolean 
       <Tabla
         data={solicitudes}
         columns={[
-          { header: "Usuario", render: s => s.Usuario?.nombre },
-          { header: "Accesos", render: s => s.AccesoDisponible?.nombre },
-          { header: "Fecha", render: s => s.fechaSolicitud ? new Date(s.fechaSolicitud).toLocaleString() : "" },
+          { header: "Usuario", render: (s) => s.Usuario?.nombre },
+          { header: "Accesos", render: (s) => s.AccesoDisponible?.nombre },
+          {
+            header: "Fecha",
+            render: (s) =>
+              s.fechaSolicitud
+                ? new Date(s.fechaSolicitud).toLocaleString()
+                : "",
+          },
           {
             header: "Estado",
-            render: s =>
+            render: (s) =>
               s.estado === "pendiente" ? (
                 <>
                   <button

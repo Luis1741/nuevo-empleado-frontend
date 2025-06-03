@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { ActionCard } from "../components/ActionCard";
 import ListaSolicitudesAcceso from "../modules/accesos/SolicitudAccesoList";
 import { useState } from "react";
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 export default function HomePage() {
- const [recargar, setRecargar] = useState(false);
+  const [recargar] = useState(false);
   const navigate = useNavigate();
 
   return (

@@ -17,10 +17,7 @@ const UsuariosPage = () => {
         usuarioEditar={usuarioEditar}
         onLimpiarEdicion={() => setUsuarioEditar(null)}
       />
-      <UsuarioList
-        recargar={recargar}
-        onEditarUsuario={setUsuarioEditar}
-      />
+      <UsuarioList recargar={recargar} onEditarUsuario={setUsuarioEditar} />
     </div>
   );
 };

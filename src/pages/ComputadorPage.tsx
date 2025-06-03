@@ -5,11 +5,11 @@ import HistorialAsignacionesList from "../modules/computadores/HistorialAsignaci
 
 export default function ComputadorPage() {
   const [recargar, setRecargar] = useState(false);
-    const actualizar = () => setRecargar(!recargar);
+  const actualizar = () => setRecargar(!recargar);
   return (
     <div className="container mt-4">
       <h2>Asignación de Computadores</h2>
-      <AsignacionComputador onAsignado={actualizar}/>
+      <AsignacionComputador onAsignado={actualizar} />
       <HistorialAsignacionesList recargar={recargar} />
     </div>
   );
